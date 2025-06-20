@@ -7,5 +7,5 @@ public interface CourseService {
 
     void showCourse(int id); // ----------- BUAT USER & ADMIN
 
-    void addCourse(); // ----------- BUAT ADMIN
+    void addCourse(int id, String title, String desc, int price); // ----------- BUAT ADMIN
 }
