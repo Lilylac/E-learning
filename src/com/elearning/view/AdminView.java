@@ -1,9 +1,15 @@
 package com.elearning.view;
 
+import com.elearning.services.CourseServiceImpl;
+
 import java.util.Scanner;
 
 public class AdminView {
-
+    private CourseServiceImpl service;
+   
+     public UserView(CourseServiceImpl service){
+        this.service = service;
+    }
 
     void show() {
         Scanner scan = new Scanner(System.in);
@@ -38,6 +44,27 @@ public class AdminView {
             System.out.println("--- 3. Remove Course");
             System.out.println("--- 4. Create Course");
             System.out.println("--- 99. Back");
+            System.out.print("Masukan pilihan: ");
+            int chose = scan.nextInt();
+            switch (chose){
+                case 1 -> service.showAllCourse();
+
+
+                case 4 -> {
+                    System.out.print("Masukan id: ");
+                    int id = scan.nextInt();
+                    System.out.print("Masukan nama course: ");
+                    String nama = scan.next();
+                    scan.nextLine();
+                    System.out.print("Masukan desc course: ");
+                    String desc = scan.next();
+                    System.out.print("Masukan harga course: ");
+                    int price = scan.nextInt();
+
+                    service.addCourse(id, nama, desc, price);
+                    System.out.println("Course telah ditambahkan");
+                }
+            }
             System.out.println("-------------------------------------------------");
         } else if (choose == 4) {
             return;
