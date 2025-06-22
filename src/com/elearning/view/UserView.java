@@ -20,7 +20,7 @@ public class UserView {
     public void show() {
         System.out.println("---------------------------USER DASHBOARD-------------------");
         System.out.println("-------------------------------------------------");
-        System.out.println("--- 1. Lihat Course    2. Course Saya    3. Edit Profile    3. Exit ");
+        System.out.println("--- 1. Beli Course    2. Course Saya    3. Edit Profile    99. Exit ");
         System.out.println("-------------------------------------------------");
         System.out.print("Masukan pilihan: ");
         int choose = Integer.valueOf(scan.nextLine());
@@ -28,6 +28,15 @@ public class UserView {
         switch (choose) {
             case 1 -> {
                 courseService.showAllCourse();
+            }
+            case 2 -> {
+//    ??????
+            }
+            case 3 -> {
+//                userService.editSelectedUser();
+            }
+            case 99 -> {
+                return;
             }
         }
     }

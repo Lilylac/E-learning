@@ -25,7 +25,6 @@ public class AdminView {
         switch (choose) {
             case 1 -> showMenuUser();
             case 2 -> showMenuCourse();
-//            case 4 -> ;
             case 99 -> {
                 return;
             }
@@ -84,8 +83,8 @@ public class AdminView {
 
     private void showMenuUser() {
         System.out.println("1. Tampilakan Semua Pengguna");
-        System.out.println("3. Hapus User");
-        System.out.println("4. Sunting User");
+        System.out.println("2. Hapus User");
+        System.out.println("3. Sunting User");
         System.out.println("99. Kembali");
         int choose = Integer.parseInt(scan.nextLine());
         switch (choose) {

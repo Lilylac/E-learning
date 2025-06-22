@@ -1,10 +1,12 @@
 package com.elearning.module;
 
+import java.util.List;
+
 public class User {
     private int userid;
     private String username;
     private String password;
-    // List<BaseUser> ownedCourse;
+     List<Course> ownedCourse;
 
 
     public User(){};
@@ -40,4 +42,11 @@ public class User {
         this.username = username;
     }
 
+    public List<Course> getOwnedCourse() {
+        return ownedCourse;
+    }
+
+    public void setOwnedCourse(List<Course> ownedCourse) {
+        this.ownedCourse = ownedCourse;
+    }
 }
