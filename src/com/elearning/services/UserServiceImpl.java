@@ -4,9 +4,11 @@ import com.elearning.module.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class UserServiceImpl implements UserService {
     List<User> users = new ArrayList<>();
+    Scanner scan = new Scanner(System.in);
     int userIdHelper = 2024320000;
 
 
@@ -37,12 +39,6 @@ public class UserServiceImpl implements UserService {
                 System.out.println(user.getUsername().equals(username));
                 break;
             }
-//            else if (username.equalsIgnoreCase("admin")) {
-//                helperRegister = false;
-//                System.out.println(username.equalsIgnoreCase("admin"));
-//                break;
-//            }
-
         }
         return helperRegister;
 
@@ -61,16 +57,57 @@ public class UserServiceImpl implements UserService {
     @Override
     public void showSelectedUser(int IdUser) {
 
+
     }
 
     @Override
-    public void editSelectedUser(int IdUser) {
+    public void editSelectedUser(String userName, String password) {
+        if (users.isEmpty()) {
+            System.out.println("User tidak terdaftar ada");
+        }
+        for (User user : users) {
+            if (userName.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                System.out.println("-----------------------------");
+                System.out.println("id     : " + user.getUserId());
+                System.out.println("Username : " + user.getUsername());
+                System.out.println("Password     : " + user.getPassword());
 
+                System.out.println("[1] Username [2] Password [3] bukan akun ini ");
+                System.out.print("--- Apa yang ingin anda ubah :  ");
+                int choose = Integer.parseInt(scan.nextLine());
+                switch (choose) {
+                    case 1:
+                        System.out.println("Masukkan username baru :");
+                        String newUsername = String.valueOf(scan.nextLine());
+                        user.setUsername(newUsername);
+                        System.out.println("Username sudah diubah");
+                        break;
+                    case 2:
+                        System.out.println("Masukkan password baru :");
+                        String newPassword = String.valueOf(scan.nextLine());
+                        user.setPassword(newPassword);
+                        System.out.println("Password sudah diubah");
+                        break;
+                    case 3:
+                        System.out.println("Sunting User dibatalkan");
+                        break;
+                    default:
+                        System.out.println("Anda salah input nomor!");
+                        break;
+                }
+            }
+        }
     }
 
     @Override
     public void showOwnedCourse(int id) {
+//        System.out.println(users.get().;
+    }
 
+    @Override
+    public void removeUser(int idUser) {
+        users.removeIf(user -> idUser == user.getUserId());
+        System.out.println("User berhasil di hapus");
     }
 
 
