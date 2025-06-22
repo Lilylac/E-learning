@@ -8,10 +8,15 @@ public class UserView {
     private CourseServiceImpl service;
     Scanner scan = new Scanner(System.in);
 
-    public UserView(CourseServiceImpl service){
+    public UserView(CourseServiceImpl service) {
         this.service = service;
     }
-    public void show(){
+
+    public UserView() {
+
+    }
+
+    public void show() {
         System.out.println("---------------------------USER DASHBOARD-------------------");
         System.out.println("-------------------------------------------------");
         System.out.println("--- 1. Lihat Course    2. Course Saya    3. Edit Profile    3. Exit ");
@@ -19,9 +24,10 @@ public class UserView {
         System.out.print("Masukan pilihan: ");
         int choose = Integer.valueOf(scan.nextLine());
 
-        switch (choose){
+        switch (choose) {
             case 1 -> {
                 service.buyCourse();
             }
+        }
     }
 }

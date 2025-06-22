@@ -34,7 +34,7 @@ public class LoginView {
         String password = String.valueOf(scan.nextLine());
 
         if (adminService.loginAdmin(username,password)) {
-            adminView.show();
+            adminView.showMenu();
         } else if (userService.loginUser(username, password)) {
             System.out.println("Login Berhasil");
             userView.show();

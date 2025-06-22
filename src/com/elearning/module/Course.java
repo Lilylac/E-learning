@@ -10,7 +10,7 @@ public class Course {
         this.courseId = id;
         this.tittleCourse = tittleCourse;
         this.descCourse = descCourse;
-        this.priceCourse;
+        this.priceCourse = priceCourse;
     }
 
     public int getCourseId() {
@@ -27,5 +27,17 @@ public class Course {
 
     public int getPriceCourse() {
         return priceCourse;
+    }
+
+    public void setTittleCourse(String newTitleCourse) {
+    }
+
+    public void setDescCourse(String newDecs) {
+    }
+
+    public void setPriceCourse(int newPrice) {
+    }
+
+    public void setCourseId(int newIdCourse) {
     }
 }

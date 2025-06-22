@@ -17,10 +17,61 @@ public class CourseServiceImpl implements CourseService {
         courses.add(course);
     }
 
+    @Override
+    public List<Course> getCourse(int idCourse) {
+        return List.of();
+    }
+
+    @Override
+    public void removeCourse(int idCourse) {
+        courses.removeIf(course -> idCourse == course.getCourseId());
+        System.out.println("Kursus berhasil di hapus");
+    }
+
+    @Override
+    public void editCourse(int idCourse) {
+        if (courses.isEmpty()) {
+            System.out.println("Belum ada kursus yang terdaftar");
+        }
+        for (Course course : courses) {
+            if (idCourse == course.getCourseId()) {
+                System.out.println("1. Id kursus : " + course.getCourseId());
+                System.out.println("2. Nama kursus : " + course.getTittleCourse());
+                System.out.println("3. Deskripsi Kursus : " + course.getDescCourse());
+                System.out.println("4. Harga Kursus : " + course.getPriceCourse());
+
+                System.out.println("Informasi apa yang akan kamu ubah?");
+                int helperEditCourse = Integer.parseInt(scan.nextLine());
+                switch (helperEditCourse) {
+                    case 1 -> {
+                        System.out.println("Masukan id kursus baru");
+                        int newIdCourse = Integer.parseInt(scan.nextLine());
+                        course.setCourseId(newIdCourse);
+                    }
+                    case 2 -> {
+                        System.out.println("Masukan judul kursus baru");
+                        String newTitleCourse = String.valueOf(scan.nextLine());
+                        course.setTittleCourse(newTitleCourse);
+                    }
+                    case 3 -> {
+                        System.out.println("Masukan deskripsi kursus baru");
+                        String newDecs = String.valueOf(scan.nextLine());
+                        course.setDescCourse(newDecs);
+                    }
+                    case 4 -> {
+                        System.out.println("Masukan harga kursus baru");
+                        int newPrice = Integer.parseInt(scan.nextLine());
+                        course.setPriceCourse(newPrice);
+                    }
+                }
+            }
+        }
+    }
+
     /**/
     @Override
     public void showAllCourse() {
-        if(courses.isEmpty()){
+        if (courses.isEmpty()) {
             System.out.println("Course belum tersedia");
         }
         for (Course course : courses) {
@@ -33,7 +84,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void buyCourse() {
-         try {
+        try {
             // cari course berdasarkan id
             boolean coursefound = false;
 
@@ -74,7 +125,7 @@ public class CourseServiceImpl implements CourseService {
                     System.out.println("Course tidak ada silahkan input ulang");
                 }
             }
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("Input tidak valid. Silahkan masukan angka");
             scan.nextLine();
         }
