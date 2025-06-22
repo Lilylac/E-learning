@@ -6,8 +6,14 @@ import com.elearning.services.UserServiceImpl;
 import java.util.Scanner;
 
 public class AdminView {
-    CourseServiceImpl courseService = new CourseServiceImpl();
-    UserServiceImpl userService = new UserServiceImpl();
+    private final UserServiceImpl userService;
+    private final CourseServiceImpl courseService;
+
+    public AdminView(UserServiceImpl userService , CourseServiceImpl courseService) {
+        this.userService = userService;
+        this.courseService = courseService;
+    }
+
     Scanner scan = new Scanner(System.in);
 
     void showMenu() {

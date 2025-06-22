@@ -1,7 +1,10 @@
 package com.elearning.view;
 
 
+import com.elearning.module.Course;
+import com.elearning.module.User;
 import com.elearning.services.AdminServiceImpl;
+import com.elearning.services.CourseServiceImpl;
 import com.elearning.services.UserServiceImpl;
 
 import java.util.InputMismatchException;
@@ -9,16 +12,19 @@ import java.util.Scanner;
 
 
 public class MainView {
+    private final UserServiceImpl userService;
+    private final AdminServiceImpl adminService;
+    private final CourseServiceImpl courseService;
     Scanner scan = new Scanner(System.in);
 
-    UserServiceImpl userService = new UserServiceImpl();
-    AdminServiceImpl adminService = new AdminServiceImpl();
+    public MainView(UserServiceImpl userService, AdminServiceImpl adminService, CourseServiceImpl courseService) {
+        this.userService = userService;
+        this.adminService = adminService;
+        this.courseService = courseService;
+    }
 
-    AdminView adminView = new AdminView();
-    UserView userView = new UserView();
 
     public void show() {
-
         try {
             System.out.println("--------------WELCOME TO ADITYA COURSE-----------");
             System.out.println("-------------------------------------------------");
@@ -32,8 +38,10 @@ public class MainView {
                 System.out.print("Masukan Password anda: ");
                 String password = String.valueOf(scan.nextLine());
                 if (adminService.loginAdmin(username, password)) {
+                    AdminView adminView = new AdminView(userService,courseService);
                     adminView.showMenu();
                 } else if (userService.loginUser(username, password)) {
+                    UserView userView = new UserView(userService,courseService);
                     userView.show();
                 }
                 show();

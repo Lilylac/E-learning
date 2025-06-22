@@ -1,20 +1,21 @@
 package com.elearning.view;
 
 import com.elearning.services.CourseServiceImpl;
+import com.elearning.services.UserServiceImpl;
 
 import java.util.Scanner;
 
 public class UserView {
-    private CourseServiceImpl service;
     Scanner scan = new Scanner(System.in);
 
-    public UserView(CourseServiceImpl service) {
-        this.service = service;
+    private final UserServiceImpl userService;
+    private final CourseServiceImpl courseService;
+
+    public UserView(UserServiceImpl userService, CourseServiceImpl courseService) {
+        this.userService = userService;
+        this.courseService = courseService;
     }
 
-    public UserView() {
-
-    }
 
     public void show() {
         System.out.println("---------------------------USER DASHBOARD-------------------");
@@ -26,7 +27,8 @@ public class UserView {
 
         switch (choose) {
             case 1 -> {
-                service.buyCourse();
+                courseService.showAllCourse();
+
             }
         }
     }
