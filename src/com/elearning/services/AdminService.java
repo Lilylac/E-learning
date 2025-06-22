@@ -1,8 +1,6 @@
 package com.elearning.services;
 
-import com.elearning.module.BaseAdmin;
-
-public interface AdminAuthService {
+public interface AdminService {
 
     boolean loginAdmin(String username, String password);
 

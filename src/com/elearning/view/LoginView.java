@@ -1,15 +1,14 @@
 package com.elearning.view;
 
-import com.elearning.module.BaseAdmin;
-import com.elearning.services.AdminAuthServiceImpl;
-import com.elearning.services.UserAuthServiceImpl;
+import com.elearning.services.AdminServiceImpl;
+import com.elearning.services.UserServiceImpl;
 
 import java.util.Scanner;
 
 public class LoginView {
     Scanner scan = new Scanner(System.in);
-    AdminAuthServiceImpl adminService = new AdminAuthServiceImpl();
-    UserAuthServiceImpl userService = new UserAuthServiceImpl();
+    AdminServiceImpl adminService = new AdminServiceImpl();
+    UserServiceImpl userService = new UserServiceImpl();
     UserView userView = new UserView();
     AdminView adminView = new AdminView();
 

@@ -1,12 +1,12 @@
 package com.elearning.module;
 
-public class BaseCourse {
+public class Course {
     private int courseId;
     private String tittleCourse;
     private String descCourse;
     private int priceCourse;
 
-    public BaseCourse(int id, String tittleCourse, String descCourse, int priceCourse){
+    public Course(int id, String tittleCourse, String descCourse, int priceCourse){
         this.courseId = id;
         this.tittleCourse = tittleCourse;
         this.descCourse = descCourse;

@@ -1,19 +1,19 @@
 package com.elearning.services;
 
-import com.elearning.module.BaseAdmin;
+import com.elearning.module.Admin;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminAuthServiceImpl implements AdminAuthService {
-List<BaseAdmin> admins = new ArrayList<>();
+public class AdminServiceImpl implements AdminService {
+List<Admin> admins = new ArrayList<>();
 
 
     @Override
     public boolean loginAdmin(String username, String password) {
         boolean helperLoginAdmin = false;
-        for (BaseAdmin admin : admins) {
+        for (Admin admin : admins) {
             if (admin.getUsername().equals(username) && admin.getPassword().equals(password)) {
                 helperLoginAdmin = true;
                 break;

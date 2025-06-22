@@ -1,6 +1,6 @@
 package com.elearning.services;
 
-public interface UserAuthService {
+public interface UserService {
     void register(int userId, String username, String password);
 
     boolean loginUser(String username, String password);

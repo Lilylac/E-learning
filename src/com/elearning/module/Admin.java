@@ -1,23 +1,20 @@
 package com.elearning.module;
 
-public class BaseUser {
-    private int userid;
+public class Admin {
+    private int userId;
     private String username;
     private String password;
-    // List<BaseUser> ownedCourse;
 
+    public Admin(){}
 
-    public BaseUser(){};
-
-
-    public BaseUser(int userid, String username, String password) {
-        this.userid = userid;
+    public Admin(int userid, String username, String password) {
+        this.userId = userid;
         this.username = username;
         this.password = password;
     }
 
     public int getUserId() {
-        return userid;
+        return userId;
     }
 
     public String getPassword() {
@@ -27,17 +24,13 @@ public class BaseUser {
     public String getUsername() {
         return username;
     }
-
-    public void setUserId(int userid) {
-        this.userid = userid;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
-
 }

@@ -1,6 +1,6 @@
 package com.elearning.services;
 
-import com.elearning.module.BaseCourse;
+import com.elearning.module.Course;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,11 +9,11 @@ import java.util.InputMismatchException;
 
 public class CourseServiceImpl implements CourseService {
     Scanner scan = new Scanner(System.in);
-    List<BaseCourse> courses = new ArrayList<>();
+    List<Course> courses = new ArrayList<>();
 
     @Override
     public void addCourse(int id, String title, String desc, int price) {
-        BaseCourse course = new BaseCourse(id, tittle, desc, price);
+        Course course = new Course(id, title, desc, price);
         courses.add(course);
     }
 
@@ -23,7 +23,7 @@ public class CourseServiceImpl implements CourseService {
         if(courses.isEmpty()){
             System.out.println("Course belum tersedia");
         }
-        for (BaseCourse course : courses) {
+        for (Course course : courses) {
             System.out.println("Judul: " + course.getTittleCourse());
             System.out.println("Deskripsi: " + course.getDescCourse());
             System.out.println("Harga: " + course.getPriceCourse());
@@ -41,9 +41,9 @@ public class CourseServiceImpl implements CourseService {
                 System.out.print("Masukan id course: ");
                 int id = scan.nextInt();
 
-                BaseCourse selectcourse = null;
+                Course selectcourse = null;
 
-                for (BaseCourse course : courses) {
+                for (Course course : courses) {
                     if (id == course.getCourseId()) {
                         selectcourse = course;
                     }
