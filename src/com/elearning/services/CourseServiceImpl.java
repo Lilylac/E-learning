@@ -20,7 +20,13 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public List<Course> getCourse(int idCourse) {
-        return List.of();
+        List<Course> result = new ArrayList<>();
+        for (Course course : courses) {
+            if (idCourse == course.getCourseId()) {
+                result.add(course);
+            }
+        }
+        return result;
     }
 
 

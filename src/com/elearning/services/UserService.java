@@ -17,5 +17,6 @@ public interface UserService {
 
     void removeUser(int idUser);
 
+    void addCourseToUser(int idUser);
 
 }

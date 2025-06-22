@@ -30,7 +30,10 @@ public class UserView {
                 courseService.showAllCourse();
             }
             case 2 -> {
-//    ??????
+                System.out.println("Masukan Id Mu : ");
+                int idUser = Integer.valueOf(scan.nextLine());
+                userService.showOwnedCourse(idUser);
+
             }
             case 3 -> {
 //                userService.editSelectedUser();

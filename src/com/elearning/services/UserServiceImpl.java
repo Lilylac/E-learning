@@ -1,5 +1,6 @@
 package com.elearning.services;
 
+import com.elearning.module.Course;
 import com.elearning.module.User;
 
 import java.util.ArrayList;
@@ -101,7 +102,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void showOwnedCourse(int id) {
-//        System.out.println(users.get().;
+        for (User user : users) {
+            if (id == user.getUserId()) {
+                System.out.println("== Course milik user: " + user.getUsername() + " ==");
+                List<Course> userCourses = user.getOwnedCourse();
+                if (userCourses.isEmpty()) {
+                    System.out.println("Belum memiliki course.");
+                    return;
+                }
+
+                for (Course course : userCourses) {
+                    System.out.println("hi");
+                    System.out.println("ID Course   : " + course.getCourseId());
+                    System.out.println("Judul       : " + course.getTittleCourse());
+                    System.out.println("Deskripsi   : " + course.getDescCourse());
+                    System.out.println("Harga       : " + course.getPriceCourse());
+                    System.out.println("---------------------------");
+                }
+                return;
+            }
+        }
+        System.out.println("User dengan ID " + id + " tidak ditemukan.");
     }
 
     @Override
@@ -109,9 +130,14 @@ public class UserServiceImpl implements UserService {
         try {
             users.removeIf(user -> idUser == user.getUserId());
             System.out.println("User berhasil di hapus");
-        } catch (NumberFormatException e ){
+        } catch (NumberFormatException e) {
             System.out.println("Harap masukan Id User");
         }
+    }
+
+    @Override
+    public void addCourseToUser(int idUser) {
+
     }
 
 
