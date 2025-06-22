@@ -28,7 +28,6 @@ public class UserView {
         switch (choose) {
             case 1 -> {
                 courseService.showAllCourse();
-
             }
         }
     }

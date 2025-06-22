@@ -106,8 +106,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void removeUser(int idUser) {
-        users.removeIf(user -> idUser == user.getUserId());
-        System.out.println("User berhasil di hapus");
+        try {
+            users.removeIf(user -> idUser == user.getUserId());
+            System.out.println("User berhasil di hapus");
+        } catch (NumberFormatException e ){
+            System.out.println("Harap masukan Id User");
+        }
     }
 
 

@@ -25,7 +25,6 @@ public class AdminView {
         switch (choose) {
             case 1 -> showMenuUser();
             case 2 -> showMenuCourse();
-//            case 3 -> ;
 //            case 4 -> ;
             case 99 -> {
                 return;
@@ -91,12 +90,24 @@ public class AdminView {
         int choose = Integer.parseInt(scan.nextLine());
         switch (choose) {
             case 1 -> userService.showAllUsers();
-//            case 2 ->;
-//            case 3 -> ;
-//            case 4 -> ;
-            case 99 -> showMenu();
-
+            case 2 -> {
+                userService.showAllUsers();
+                System.out.println("Masukan user yang ingin dihapus");
+                int userId = Integer.valueOf(scan.nextLine());
+                userService.removeUser(userId);
+            }
+            case 3 -> {
+                System.out.println("Masukan username yang ingin disunting");
+                String userId = String.valueOf(scan.nextLine());
+                System.out.println("Masukan user yang ingin dihapus");
+                String password = String.valueOf(scan.nextLine());
+                userService.editSelectedUser(userId,password);
+            }
+            case 99 -> {
+                return;
+            }
         }
+        showMenu();
     }
 
 }
