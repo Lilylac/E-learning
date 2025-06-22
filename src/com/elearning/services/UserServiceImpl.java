@@ -101,9 +101,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void showOwnedCourse(int id) {
+    public void showOwnedCourse(int idCoruse) {
         for (User user : users) {
-            if (id == user.getUserId()) {
+            if (idCoruse == user.getUserId()) {
                 System.out.println("== Course milik user: " + user.getUsername() + " ==");
                 List<Course> userCourses = user.getOwnedCourse();
                 if (userCourses.isEmpty()) {
