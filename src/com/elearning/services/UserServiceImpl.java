@@ -58,6 +58,21 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public void showSelectedUser(int IdUser) {
+
+    }
+
+    @Override
+    public void editSelectedUser(int IdUser) {
+
+    }
+
+    @Override
+    public void showOwnedCourse(int id) {
+
+    }
+
 
     public int idHandling() {
         return userIdHelper++;

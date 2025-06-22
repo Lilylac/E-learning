@@ -8,4 +8,10 @@ public interface UserService {
     boolean checkUsernameAvailable(String username, String password);
 
     void showAllUsers();
+
+    void showSelectedUser(int IdUser);
+
+    void editSelectedUser(int IdUser);
+
+    void showOwnedCourse(int id);
 }
