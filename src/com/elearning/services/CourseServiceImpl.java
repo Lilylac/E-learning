@@ -17,10 +17,12 @@ public class CourseServiceImpl implements CourseService {
         courses.add(course);
     }
 
+
     @Override
     public List<Course> getCourse(int idCourse) {
         return List.of();
     }
+
 
     @Override
     public void removeCourse(int idCourse) {
@@ -28,10 +30,12 @@ public class CourseServiceImpl implements CourseService {
         System.out.println("Kursus berhasil di hapus");
     }
 
+
     @Override
     public void editCourse(int idCourse) {
         if (courses.isEmpty()) {
             System.out.println("Belum ada kursus yang terdaftar");
+
         }
         for (Course course : courses) {
             if (idCourse == course.getCourseId()) {
@@ -75,6 +79,7 @@ public class CourseServiceImpl implements CourseService {
             System.out.println("Course belum tersedia");
         }
         for (Course course : courses) {
+            System.out.println("Kursus id: " + course.getCourseId());
             System.out.println("Judul: " + course.getTittleCourse());
             System.out.println("Deskripsi: " + course.getDescCourse());
             System.out.println("Harga: " + course.getPriceCourse());

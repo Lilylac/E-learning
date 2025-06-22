@@ -13,7 +13,7 @@ public class AdminView {
     void showMenu() {
         System.out.println("---------------------------ADMIN DASHBOARD-------------------");
         System.out.println("-------------------------------------------------");
-        System.out.println("--- 1. Users  3. Course  4. Exit   ");
+        System.out.println("--- 1. Users  2. Course  4. Exit   ");
         System.out.println("-------------------------------------------------");
         int choose = Integer.valueOf(scan.nextLine());
         switch (choose) {
@@ -67,7 +67,9 @@ public class AdminView {
                     return;
                 }
                 default -> showMenuCourse();
+
             }
+            showMenuCourse();
         } catch (NumberFormatException e) {
             System.out.println("Masukkan ID atau Harga Dengan Nomor!!!");
             showMenuCourse();
@@ -82,8 +84,8 @@ public class AdminView {
         System.out.println("99. Kembali");
         int choose = Integer.parseInt(scan.nextLine());
         switch (choose) {
-            case 1 -> //userService.showAllUser();
-//            case 2 -> ;
+            case 1 -> userService.showAllUsers();
+//            case 2 ->;
 //            case 3 -> ;
 //            case 4 -> ;
             case 99 -> showMenu();

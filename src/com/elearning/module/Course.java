@@ -29,15 +29,21 @@ public class Course {
         return priceCourse;
     }
 
-    public void setTittleCourse(String newTitleCourse) {
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
-    public void setDescCourse(String newDecs) {
+    public void setTittleCourse(String tittleCourse) {
+        this.tittleCourse = tittleCourse;
     }
 
-    public void setPriceCourse(int newPrice) {
+    public void setDescCourse(String descCourse) {
+        this.descCourse = descCourse;
     }
 
-    public void setCourseId(int newIdCourse) {
+    public void setPriceCourse(int priceCourse) {
+        this.priceCourse = priceCourse;
     }
+
+
 }
