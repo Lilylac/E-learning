@@ -46,14 +46,8 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-
+    
     public void setOwnedCourse(Course course){
         ownedCourse.add(course);
-    }
-
-  
-
-    public void setOwnedCourse(List<Course> ownedCourse) {
-        this.ownedCourse = ownedCourse;
     }
 }
