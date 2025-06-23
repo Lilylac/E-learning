@@ -33,6 +33,12 @@ public class MainView {
             System.out.println("=========================================================");
             System.out.print("Masukan Pilihan : ");
             int choose = Integer.parseInt(scan.nextLine());
+
+            if(choose < 1 || choose > 3){
+                System.out.println("Pilihan tidak ada");
+                show();
+            }
+            
             if (choose == 1) {
                 System.out.println("=========================================================");
                 System.out.println("                     FORM INPUT LOGIN                    ");
