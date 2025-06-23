@@ -24,16 +24,16 @@ public class CourseServiceImpl implements CourseService {
     }
 
 
-    @Override
-    public List<Course> getCourse(int idCourse) {
-        List<Course> result = new ArrayList<>();
-        for (Course course : courses) {
-            if (idCourse == course.getCourseId()) {
-                result.add(course);
-            }
-        }
-        return result;
-    }
+//    @Override
+//    public List<Course> getCourse(int idCourse) {
+//        List<Course> result = new ArrayList<>();
+//        for (Course course : courses) {
+//            if (idCourse == course.getCourseId()) {
+//                result.add(course);
+//            }
+//        }
+//        return result;
+//    }
 
 
     @Override

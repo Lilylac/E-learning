@@ -8,8 +8,9 @@ public interface CourseService {
     void showAllCourse(); // ----------- BUAT USER & ADMIN
 
     void addCourse(int id, String title, String desc, int price);
-    // ----------- BUAT ADMIN
-    List<Course> getCourse(int idCourse);
+
+
+//    List<Course> getCourse(int idCourse); REMOVE UNUSED METHOD
 
     void removeCourse(int idCourse);
 
