@@ -34,6 +34,9 @@ public class MainView {
             System.out.print("Masukan Pilihan : ");
             int choose = Integer.parseInt(scan.nextLine());
             if (choose == 1) {
+                System.out.println("=========================================================");
+                System.out.println("                     FORM INPUT LOGIN                    ");
+                System.out.println("=========================================================");
                 System.out.print("Masukan Username anda: ");
                 String username = String.valueOf(scan.nextLine());
                 System.out.print("Masukan Password anda: ");
@@ -47,12 +50,20 @@ public class MainView {
                 }
                 show();
             } else if (choose == 2) {
+                System.out.println("=========================================================");
+                System.out.println("                  FORM INPUT REGISTER                    ");
+                System.out.println("=========================================================");
                 System.out.print("Masukan Username anda: ");
                 String username = String.valueOf(scan.nextLine());
                 System.out.print("Masukan Password anda: ");
                 String password = String.valueOf(scan.nextLine());
-                userService.register(userService.idHandling(), username, password);
-                System.out.println("Akun anda telah berhasil dibuat");
+                if(userService.checkUsernameAvailable(username,password)){
+                    userService.register(userService.idHandling(), username, password);
+                    System.out.println("Akun anda telah berhasil dibuat");
+                } else {
+                    System.out.println("Username telah terpakai");
+                }
+
                 show();
             } else if (choose == 3) {
                 System.out.println("semoga sukses");

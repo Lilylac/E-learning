@@ -40,10 +40,10 @@ public class CourseServiceImpl implements CourseService {
                 System.out.println("=========================================================");
                 System.out.println("                       DATA COURSE                       ");
                 System.out.println("=========================================================");
-                System.out.println("ID       : " + course.getCourseId());
-                System.out.println("Judul    : " + course.getTittleCourse());
-                System.out.println("Deskripsi: " + course.getDescCourse());
-                System.out.println("Harga    : Rp " + course.getPriceCourse());
+                System.out.println("1. ID       : " + course.getCourseId());
+                System.out.println("2. Judul    : " + course.getTittleCourse());
+                System.out.println("3. Deskripsi: " + course.getDescCourse());
+                System.out.println("4. Harga    : Rp " + course.getPriceCourse());
                 System.out.println("=========================================================");
                 System.out.println("Informasi apa yang akan kamu ubah?");
                 System.out.println("=========================================================");

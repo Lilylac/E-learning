@@ -42,6 +42,7 @@ public class AdminView {
 
     private void showMenuCourse() {
         try {
+            System.out.println("=========================================================");
             System.out.println("                    COURSE SETTINGS                    ");
             System.out.println("=========================================================");
             System.out.println("  1. Tampilkan Semua Course");

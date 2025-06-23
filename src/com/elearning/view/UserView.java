@@ -28,9 +28,10 @@ public class UserView {
 
         switch (choose) {
             case 1 -> {
-                System.out.println("                                                                 ");
+                System.out.println("=========================================================");
+                System.out.println("                     FORM BELI COURSE                    ");
+                System.out.println("=========================================================");
                 courseService.showAllCourse();
-                System.out.println("                                                                 ");
                 System.out.println("Masukan Id Anda : ");
                 int idUser = Integer.valueOf(scan.nextLine());
                 courseService.buyCourse(idUser);

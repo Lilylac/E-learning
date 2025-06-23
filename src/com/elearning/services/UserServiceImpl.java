@@ -103,7 +103,9 @@ public class UserServiceImpl implements UserService {
     public void showOwnedCourse(int idCoruse) {
         for (User user : users) {
             if (idCoruse == user.getUserId()) {
-                System.out.println("== Course milik user: " + user.getUsername() + " ==");
+                System.out.println("=========================================================");
+                System.out.println("                    COURSE MILIK USER                    ");
+                System.out.println("=========================================================");
                 List<Course> userCourses = user.getOwnedCourse();
                 if (userCourses.isEmpty()) {
                     System.out.println("Belum memiliki course.");
@@ -111,7 +113,6 @@ public class UserServiceImpl implements UserService {
                 }
 
                 for (Course course : userCourses) {
-                    System.out.println("hi");
                     System.out.println("ID Course   : " + course.getCourseId());
                     System.out.println("Judul       : " + course.getTittleCourse());
                     System.out.println("Deskripsi   : " + course.getDescCourse());
