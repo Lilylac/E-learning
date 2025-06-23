@@ -47,10 +47,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void showAllUsers() {
         for (User user : users) {
-            System.out.println("-----------------------------");
-            System.out.println("id     : " + user.getUserId());
-            System.out.println("Username : " + user.getUsername());
+            System.out.println("=========================================================");
+            System.out.println("                 INFORMASI PENGGUNA                      ");
+            System.out.println("=========================================================");
+            System.out.println("ID Pengguna  : " + user.getUserId());
+            System.out.println("Username     : " + user.getUsername());
             System.out.println("Password     : " + user.getPassword());
+            System.out.println("=========================================================");
         }
     }
 
@@ -61,13 +64,16 @@ public class UserServiceImpl implements UserService {
         }
         for (User user : users) {
             if (userName.equals(user.getUsername()) && password.equals(user.getPassword())) {
-                System.out.println("-----------------------------");
-                System.out.println("id     : " + user.getUserId());
-                System.out.println("Username : " + user.getUsername());
+                System.out.println("=========================================================");
+                System.out.println("                 INFORMASI PENGGUNA                      ");
+                System.out.println("=========================================================");
+                System.out.println("ID Pengguna  : " + user.getUserId());
+                System.out.println("Username     : " + user.getUsername());
                 System.out.println("Password     : " + user.getPassword());
-
-                System.out.println("[1] Username [2] Password [3] bukan akun ini ");
-                System.out.print("--- Apa yang ingin anda ubah :  ");
+                System.out.println("=========================================================");
+                System.out.println("[1] Username        [2] Password       [3] bukan akun ini");
+                System.out.println("=========================================================");
+                System.out.print("Apa yang ingin anda ubah :  ");
                 int choose = Integer.parseInt(scan.nextLine());
                 switch (choose) {
                     case 1:

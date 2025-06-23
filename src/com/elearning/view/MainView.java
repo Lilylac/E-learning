@@ -26,11 +26,12 @@ public class MainView {
 
     public void show() {
         try {
-            System.out.println("               WELCOME TO ADITYA COURSE               ");
-            System.out.println("                                                     ");
-            System.out.println("   1. Login       2. Daftar       3. Keluar           ");
-            System.out.println("                                                     ");
-            System.out.print("   Masukan Pilihan : ");
+            System.out.println("=========================================================");
+            System.out.println("                 WELCOME TO ADITYA COURSE                 ");
+            System.out.println("=========================================================");
+            System.out.println("  1. Login       2. Daftar       3. Keluar");
+            System.out.println("=========================================================");
+            System.out.print("Masukan Pilihan : ");
             int choose = Integer.parseInt(scan.nextLine());
             if (choose == 1) {
                 System.out.print("Masukan Username anda: ");
@@ -38,10 +39,10 @@ public class MainView {
                 System.out.print("Masukan Password anda: ");
                 String password = String.valueOf(scan.nextLine());
                 if (adminService.loginAdmin(username, password)) {
-                    AdminView adminView = new AdminView(userService,courseService);
+                    AdminView adminView = new AdminView(userService, courseService);
                     adminView.showMenu();
                 } else if (userService.loginUser(username, password)) {
-                    UserView userView = new UserView(userService,courseService);
+                    UserView userView = new UserView(userService, courseService);
                     userView.show();
                 }
                 show();
@@ -58,8 +59,7 @@ public class MainView {
 
             }
 
-        }
-        catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("Sout");
         }
     }

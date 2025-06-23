@@ -18,23 +18,26 @@ public class UserView {
 
 
     public void show() {
-        System.out.println("                         USER DASHBOARD                         ");
-        System.out.println("                                                                 ");
-        System.out.println("   1. Beli Course    2. Course Saya    3. Edit Profile    99. Exit ");
-        System.out.println("                                                                 ");
+        System.out.println("=========================================================");
+        System.out.println("                     USER DASHBOARD                     ");
+        System.out.println("=========================================================");
+        System.out.println("  1. Beli Course   2. Course Saya   3. Edit Profile   99. Exit");
+        System.out.println("=========================================================");
         System.out.print("Masukan pilihan: ");
-
         int choose = Integer.valueOf(scan.nextLine());
 
         switch (choose) {
             case 1 -> {
+                System.out.println("                                                                 ");
                 courseService.showAllCourse();
+                System.out.println("                                                                 ");
                 System.out.println("Masukan Id Anda : ");
                 int idUser = Integer.valueOf(scan.nextLine());
                 courseService.buyCourse(idUser);
                 show();
             }
             case 2 -> {
+                System.out.println("                                                                 ");
                 System.out.println("Masukan Id Anda : ");
                 int idUser = Integer.valueOf(scan.nextLine());
                 userService.showOwnedCourse(idUser);
@@ -42,6 +45,7 @@ public class UserView {
 
             }
             case 3 -> {
+                System.out.println("                                                                 ");
                 System.out.println("Masukan username: ");
                 String username = String.valueOf(scan.nextLine());
                 System.out.println("Masukan password: ");
