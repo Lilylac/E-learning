@@ -24,6 +24,12 @@ public class AdminView {
         System.out.println("=========================================================");
         System.out.print("Masukan Pilihan : ");
         int choose = Integer.valueOf(scan.nextLine());
+
+        if(choose < 1 || choose > 3){
+            System.out.println("Pilihan tidak ada");
+            showMenu();
+        }
+        
         switch (choose) {
             case 1 -> {
                 showMenuUser();
@@ -52,8 +58,13 @@ public class AdminView {
             System.out.println(" 99. Kembali");
             System.out.println("=========================================================");
             System.out.print("Masukan Pilihan : ");
-
             int choose = Integer.parseInt(scan.nextLine());
+
+             if(choose < 1 || choose > 5){
+                System.out.println("Pilihan tidak ada");
+                showMenuCourse();
+            }
+            
             switch (choose) {
                 case 1 -> {
                     courseService.showAllCourse();
@@ -111,6 +122,12 @@ public class AdminView {
 
             System.out.print("Masukan Pilihan : ");
             int choose = Integer.parseInt(scan.nextLine());
+
+            if(choose < 1 || choose > 4){
+                System.out.println("Pilihan tidak ada");
+                showMenuUser();
+            }
+            
             switch (choose) {
                 case 1 -> {
                     System.out.println("                                                                 ");
