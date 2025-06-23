@@ -7,13 +7,13 @@ public interface UserService {
 
     boolean loginUser(String username, String password);
 
-    boolean checkUsernameAvailable(String username, String password);
+    boolean checkUsernameAvailable(String username);
 
     void showAllUsers();
 
     void editSelectedUser(String userName, String password);
 
-    void showOwnedCourse(int id);
+    void showOwnedCourse(String username);
 
     void removeUser(int idUser);
 
