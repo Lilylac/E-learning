@@ -54,7 +54,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
     @Override
     public void editSelectedUser(String userName, String password) {
         if (users.isEmpty()) {

@@ -26,11 +26,11 @@ public class MainView {
 
     public void show() {
         try {
-            System.out.println("--------------WELCOME TO ADITYA COURSE-----------");
-            System.out.println("-------------------------------------------------");
-            System.out.println("--- " + "1. Login    " + "2. Daftar    " + "3. Keluar");
-            System.out.println("-------------------------------------------------");
-            System.out.print("--- " + "Masukan Pilihan : ");
+            System.out.println("               WELCOME TO ADITYA COURSE               ");
+            System.out.println("                                                     ");
+            System.out.println("   1. Login       2. Daftar       3. Keluar           ");
+            System.out.println("                                                     ");
+            System.out.print("   Masukan Pilihan : ");
             int choose = Integer.parseInt(scan.nextLine());
             if (choose == 1) {
                 System.out.print("Masukan Username anda: ");

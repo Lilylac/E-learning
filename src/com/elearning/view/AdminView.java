@@ -9,7 +9,7 @@ public class AdminView {
     private final UserServiceImpl userService;
     private final CourseServiceImpl courseService;
 
-    public AdminView(UserServiceImpl userService , CourseServiceImpl courseService) {
+    public AdminView(UserServiceImpl userService, CourseServiceImpl courseService) {
         this.userService = userService;
         this.courseService = courseService;
     }
@@ -17,17 +17,18 @@ public class AdminView {
     Scanner scan = new Scanner(System.in);
 
     void showMenu() {
-        System.out.println("---------------------------ADMIN DASHBOARD-------------------");
-        System.out.println("-------------------------------------------------");
-        System.out.println("--- 1. Users  2. Course  3. Exit   ");
-        System.out.println("-------------------------------------------------");
+        System.out.println("                         ADMIN DASHBOARD                        ");
+        System.out.println("                                                                ");
+        System.out.println("   1. Users     2. Course     3. Exit                            ");
+        System.out.println("                                                                ");
+        System.out.print("   Masukan Pilihan : ");
         int choose = Integer.valueOf(scan.nextLine());
         switch (choose) {
             case 1 -> {
                 showMenuUser();
                 showMenu();
             }
-            case 2 ->  {
+            case 2 -> {
                 showMenuCourse();
                 showMenu();
             }
@@ -40,16 +41,19 @@ public class AdminView {
 
     private void showMenuCourse() {
         try {
-            System.out.println("---------------------------COURSE SETTING-------------------");
-            System.out.println("-------------------------------------------------");
+            System.out.println("                         COURSE SETTING                          ");
+            System.out.println("                                                                 ");
             System.out.println("1. Tampilkan Semua Course");
             System.out.println("2. Tambah Course");
             System.out.println("3. Hapus Course");
             System.out.println("4. Sunting Course");
-            System.out.println("99. Kembali ");
+            System.out.println("99. Kembali");
+            System.out.println("                                                                ");
+            System.out.print("   Masukan Pilihan : ");
+
             int choose = Integer.parseInt(scan.nextLine());
             switch (choose) {
-                case 1 ->  {
+                case 1 -> {
                     courseService.showAllCourse();
                     showMenuCourse();
                 }
@@ -95,12 +99,14 @@ public class AdminView {
 
     private void showMenuUser() {
         try {
-            System.out.println("---------------------------USER SETTING-------------------");
-            System.out.println("-------------------------------------------------");
-            System.out.println("1. Tampilakan Semua Pengguna");
+            System.out.println("                         USER SETTING                           ");
+            System.out.println("                                                                 ");
+            System.out.println("1. Tampilkan Semua Pengguna");
             System.out.println("2. Hapus User");
             System.out.println("3. Sunting User");
             System.out.println("4. Kembali");
+            System.out.println("                                                                ");
+            System.out.print("   Masukan Pilihan : ");
             int choose = Integer.parseInt(scan.nextLine());
             switch (choose) {
                 case 1 -> {
@@ -126,7 +132,7 @@ public class AdminView {
                     return;
                 }
             }
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println("Masukan input dengan benar");
             showMenuUser();
         }
