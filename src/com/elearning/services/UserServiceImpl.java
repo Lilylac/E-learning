@@ -4,6 +4,7 @@ import com.elearning.module.Course;
 import com.elearning.module.User;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,7 +32,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkUsernameAvailable(String username, String password) {
+    public boolean checkUsernameAvailable(String username) {
         boolean helperRegister = true;
         for (User user : users) {
             if (user.getUsername().equals(username)) {
@@ -75,6 +76,11 @@ public class UserServiceImpl implements UserService {
                 System.out.println("=========================================================");
                 System.out.print("Apa yang ingin anda ubah :  ");
                 int choose = Integer.parseInt(scan.nextLine());
+
+                if(choose < 1 || choose > 3){
+                        System.out.println("Pilihan tidak ada");
+                    }
+                
                 switch (choose) {
                     case 1:
                         System.out.println("Masukkan username baru :");
@@ -116,7 +122,6 @@ public class UserServiceImpl implements UserService {
                     System.out.println("ID Course   : " + course.getCourseId());
                     System.out.println("Judul       : " + course.getTittleCourse());
                     System.out.println("Deskripsi   : " + course.getDescCourse());
-                    System.out.println("Harga       : " + course.getPriceCourse());
                     System.out.println("---------------------------");
                 }
                 return;
