@@ -54,11 +54,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
-    public void showSelectedUser(int IdUser) {
-
-
-    }
 
     @Override
     public void editSelectedUser(String userName, String password) {

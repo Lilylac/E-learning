@@ -1,7 +1,6 @@
 package com.elearning.services;
 
 import com.elearning.module.Course;
-import com.elearning.services.UserServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ public class CourseServiceImpl implements CourseService {
     List<Course> courses = new ArrayList<>();
     private final UserServiceImpl userService;
 
-    public CourseServiceImpl(UserServiceImpl userService){
+    public CourseServiceImpl(UserServiceImpl userService) {
         this.userService = userService;
     }
 
@@ -22,18 +21,6 @@ public class CourseServiceImpl implements CourseService {
         Course course = new Course(id, title, desc, price);
         courses.add(course);
     }
-
-
-//    @Override
-//    public List<Course> getCourse(int idCourse) {
-//        List<Course> result = new ArrayList<>();
-//        for (Course course : courses) {
-//            if (idCourse == course.getCourseId()) {
-//                result.add(course);
-//            }
-//        }
-//        return result;
-//    }
 
 
     @Override

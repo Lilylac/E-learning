@@ -11,8 +11,6 @@ public interface UserService {
 
     void showAllUsers();
 
-    void showSelectedUser(int IdUser);
-
     void editSelectedUser(String userName, String password);
 
     void showOwnedCourse(int id);
