@@ -48,6 +48,11 @@ public class CourseServiceImpl implements CourseService {
                 System.out.println("Informasi apa yang akan kamu ubah?");
                 System.out.println("=========================================================");
                 int helperEditCourse = Integer.parseInt(scan.nextLine());
+
+                if(helperEditCourse < 1 || helperEditCourse > 4){
+                    System.out.println("Pilihan tidak ada");
+                }
+                
                 switch (helperEditCourse) {
                     case 1 -> {
                         System.out.println("=========================================================");
