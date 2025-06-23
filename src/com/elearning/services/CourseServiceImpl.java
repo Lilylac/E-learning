@@ -5,7 +5,6 @@ import com.elearning.module.Course;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 public class CourseServiceImpl implements CourseService {
     Scanner scan = new Scanner(System.in);
@@ -19,14 +18,14 @@ public class CourseServiceImpl implements CourseService {
 
 
     @Override
-    public List<Course> getCourse(int idCourse) {
-        List<Course> result = new ArrayList<>();
+    public Course getCourse(int idCourse) {
         for (Course course : courses) {
             if (idCourse == course.getCourseId()) {
-                result.add(course);
+                Course result = new Course(course.getCourseId(), course.getTittleCourse(), co)
+                return course;
             }
         }
-        return result;
+        return
     }
 
 

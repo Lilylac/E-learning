@@ -136,8 +136,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addCourseToUser(int idUser) {
-
+    public void addCourseToUser(int idUser, Course course) {
+        for(User user : users){
+            if(user.getUserId() == idUser){
+                user.setOwnedCourse(course);
+            }
+        }
     }
 
 
