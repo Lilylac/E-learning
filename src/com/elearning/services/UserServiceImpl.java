@@ -12,7 +12,6 @@ public class UserServiceImpl implements UserService {
     Scanner scan = new Scanner(System.in);
     int userIdHelper = 2024320000;
 
-
     @Override
     public void register(int userId, String username, String password) {
         User user = new User(userId, username, password);
@@ -122,7 +121,7 @@ public class UserServiceImpl implements UserService {
                 return;
             }
         }
-        System.out.println("User dengan ID " + id + " tidak ditemukan.");
+        System.out.println("User tidak ditemukan.");
     }
 
     @Override
@@ -136,10 +135,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addCourseToUser(int idUser) {
-
+    public void addCourseToUser(int idUser, Course course) {
+        for(User user : users){
+            if(user.getUserId() == idUser){
+                user.setOwnedCourse(course);
+            }
+        }
     }
-
 
     public int idHandling() {
         return userIdHelper++;

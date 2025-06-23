@@ -28,15 +28,25 @@ public class UserView {
         switch (choose) {
             case 1 -> {
                 courseService.showAllCourse();
+                System.out.println("Masukan Id Anda : ");
+                int idUser = Integer.valueOf(scan.nextLine());
+                courseService.buyCourse(idUser);
+                show();
             }
             case 2 -> {
-                System.out.println("Masukan Id Mu : ");
+                System.out.println("Masukan Id Anda : ");
                 int idUser = Integer.valueOf(scan.nextLine());
                 userService.showOwnedCourse(idUser);
+                show();
 
             }
             case 3 -> {
-//                userService.editSelectedUser();
+                System.out.println("Masukan username: ");
+                String username = String.valueOf(scan.nextLine());
+                System.out.println("Masukan password: ");
+                String password = String.valueOf(scan.nextLine());
+                userService.editSelectedUser(username, password);
+                show();
             }
             case 99 -> {
                 return;

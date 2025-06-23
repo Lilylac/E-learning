@@ -1,5 +1,7 @@
 package com.elearning.services;
 
+import com.elearning.module.Course;
+
 public interface UserService {
     void register(int userId, String username, String password);
 
@@ -17,6 +19,6 @@ public interface UserService {
 
     void removeUser(int idUser);
 
-    void addCourseToUser(int idUser);
+    void addCourseToUser(int idUser, Course course);
 
 }

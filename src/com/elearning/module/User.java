@@ -1,15 +1,16 @@
 package com.elearning.module;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
     private int userid;
     private String username;
     private String password;
-     List<Course> ownedCourse;
+    List<Course> ownedCourse = new ArrayList<>();
 
 
-    public User(){};
+    public User(){}
 
 
     public User(int userid, String username, String password) {
@@ -30,6 +31,10 @@ public class User {
         return username;
     }
 
+    public List<Course> getOwnedCourse() {
+        return ownedCourse;
+    }
+
     public void setUserId(int userid) {
         this.userid = userid;
     }
@@ -42,11 +47,7 @@ public class User {
         this.username = username;
     }
 
-    public List<Course> getOwnedCourse() {
-        return ownedCourse;
-    }
-
-    public void setOwnedCourse(List<Course> ownedCourse) {
-        this.ownedCourse = ownedCourse;
+    public void setOwnedCourse(Course course) {
+        ownedCourse.add(course);
     }
 }

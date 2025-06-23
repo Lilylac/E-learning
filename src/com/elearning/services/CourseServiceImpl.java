@@ -1,6 +1,7 @@
 package com.elearning.services;
 
 import com.elearning.module.Course;
+import com.elearning.services.UserServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,11 @@ import java.util.InputMismatchException;
 public class CourseServiceImpl implements CourseService {
     Scanner scan = new Scanner(System.in);
     List<Course> courses = new ArrayList<>();
+    private final UserServiceImpl userService;
+
+    public CourseServiceImpl(UserServiceImpl userService){
+        this.userService = userService;
+    }
 
     @Override
     public void addCourse(int id, String title, String desc, int price) {
@@ -93,57 +99,54 @@ public class CourseServiceImpl implements CourseService {
     }
 
 
-//    @Override
-//    public void buyCourse() {
-//        try {
-//            // cari course berdasarkan id
-//            boolean coursefound = false;
-//
-//            while (!coursefound) {
-//                System.out.print("Masukan id course: ");
-//                int id = scan.nextInt();
-//
-//                Course selectcourse = null;
-//
-//                for (Course course : courses) {
-//                    if (id == course.getCourseId()) {
-//                        selectcourse = course;
-//                    }
-//                }
-//                // jika course ditemukan tampilkan informasi detailnya
-//                if (selectcourse != null) {
-//                    System.out.println("Judul: " + selectcourse.getTittleCourse());
-//                    System.out.println("Deskripsi: " + selectcourse.getDescCourse());
-//                    System.out.println("Harga: " + selectcourse.getPriceCourse());
-//
-//                    System.out.print("Masukan pembayaran sesuai nominal: ");
-//                    int bayar = scan.nextInt();
-//
-//                    int harga = selectcourse.getPriceCourse();
-//
-//                    if (bayar < harga) {
-//                        System.out.println("Pembayaran tidak cukup. total course: " + harga);
-//                    } else {
-//                        int kembalian = bayar - harga;
-//                        System.out.println("Pembayaran berhasil");
-//                        if (kembalian > 0) {
-//                            System.out.println("Kembalian: " + kembalian);
-//                        }
-//
-//                    }
-//                    coursefound = true;
-//                } else {
-//                    System.out.println("Course tidak ada silahkan input ulang");
-//                }
-//            }
-//        } catch (InputMismatchException e) {
-//            System.out.println("Input tidak valid. Silahkan masukan angka");
-//            scan.nextLine();
-//        }
-//    }
-
     @Override
-    public void showCourse(int id) {
+    public void buyCourse(int idUser) {
+        try {
+            // cari course berdasarkan id
+            boolean coursefound = false;
 
+            while (!coursefound) {
+                System.out.print("Masukan id course: ");
+                int id = scan.nextInt();
+
+                Course selectcourse = null;
+
+                for (Course course : courses) {
+                    if (id == course.getCourseId()) {
+                        selectcourse = course;
+                    }
+                }
+                // jika course ditemukan tampilkan informasi detailnya
+                if (selectcourse != null) {
+                    System.out.println("Judul: " + selectcourse.getTittleCourse());
+                    System.out.println("Deskripsi: " + selectcourse.getDescCourse());
+                    System.out.println("Harga: " + selectcourse.getPriceCourse());
+
+                    System.out.print("Masukan pembayaran sesuai nominal: ");
+                    int bayar = scan.nextInt();
+
+                    int harga = selectcourse.getPriceCourse();
+
+                    if (bayar < harga) {
+                        System.out.println("Pembayaran tidak cukup. total course: " + harga);
+                    } else {
+                        int kembalian = bayar - harga;
+                        System.out.println("Pembayaran berhasil");
+                        userService.addCourseToUser(idUser, selectcourse);
+                        System.out.println("Course telah ditambahkan ke dalam akun anda");
+
+                        if (kembalian > 0) {
+                            System.out.println("Kembalian: " + kembalian);
+                        }
+                    }
+                    coursefound = true;
+                } else {
+                    System.out.println("Course tidak ada silahkan input ulang");
+                }
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Input tidak valid. Silahkan masukan angka");
+            scan.nextLine();
+        }
     }
 }
