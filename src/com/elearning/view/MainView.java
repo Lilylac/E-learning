@@ -48,6 +48,10 @@ public class MainView {
                 } else if (userService.loginUser(username, password)) {
                     UserView userView = new UserView(userService, courseService);
                     userView.show();
+                } else {
+                    System.out.println("=========================================================");
+                    System.out.println("                  LOGIN ANDA GAGAL                       ");
+                    System.out.println("=========================================================");
                 }
                 show();
             } else if (choose == 2) {
@@ -74,9 +78,9 @@ public class MainView {
                 System.out.println("                     SEMOGA SUKSES                       ");
                 System.out.println("=========================================================");
             } else {
-                    System.out.println("=========================================================");
-                    System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
-                    System.out.println("=========================================================");
+                System.out.println("=========================================================");
+                System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
+                System.out.println("=========================================================");
             }
         } catch (InputMismatchException e) {
             System.out.println("=========================================================");
