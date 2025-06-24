@@ -61,57 +61,59 @@ public class UserServiceImpl implements UserService {
     public void editSelectedUser(String userName, String password) {
         if (users.isEmpty()) {
             System.out.println("User tidak terdaftar ada");
-        }
-        for (User user : users) {
-            if (userName.equals(user.getUsername()) && password.equals(user.getPassword())) {
-                System.out.println("=========================================================");
-                System.out.println("                 INFORMASI PENGGUNA                      ");
-                System.out.println("=========================================================");
-                System.out.println("ID Pengguna  : " + user.getUserId());
-                System.out.println("Username     : " + user.getUsername());
-                System.out.println("Password     : " + user.getPassword());
-                System.out.println("=========================================================");
-                System.out.println("[1] Username        [2] Password       [3] bukan akun ini");
-                System.out.println("=========================================================");
-                System.out.print("Apa yang ingin anda ubah :  ");
-                int choose = Integer.parseInt(scan.nextLine());
-                switch (choose) {
-                    case 1:
-                        System.out.println("Masukkan username baru :");
-                        String newUsername = String.valueOf(scan.nextLine());
-                        user.setUsername(newUsername);
-                        System.out.println("Username sudah diubah");
-                        break;
-                    case 2:
-                        System.out.println("Masukkan password baru :");
-                        String newPassword = String.valueOf(scan.nextLine());
-                        user.setPassword(newPassword);
-                        System.out.println("Password sudah diubah");
-                        break;
-                    case 3:
-                        System.out.println("Sunting User dibatalkan");
-                        break;
-                    default:
-                        System.out.println("Anda salah input nomor!");
-                        break;
+            return;
+        } else {
+            for (User user : users) {
+                if (userName.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                    System.out.println("=========================================================");
+                    System.out.println("                 INFORMASI PENGGUNA                      ");
+                    System.out.println("=========================================================");
+                    System.out.println("ID Pengguna  : " + user.getUserId());
+                    System.out.println("Username     : " + user.getUsername());
+                    System.out.println("Password     : " + user.getPassword());
+                    System.out.println("=========================================================");
+                    System.out.println("[1] Username        [2] Password       [3] bukan akun ini");
+                    System.out.println("=========================================================");
+                    System.out.print("Apa yang ingin anda ubah :  ");
+                    int choose = Integer.parseInt(scan.nextLine());
+                    switch (choose) {
+                        case 1:
+                            System.out.println("Masukkan username baru :");
+                            String newUsername = String.valueOf(scan.nextLine());
+                            user.setUsername(newUsername);
+                            System.out.println("Username sudah diubah");
+                            break;
+                        case 2:
+                            System.out.println("Masukkan password baru :");
+                            String newPassword = String.valueOf(scan.nextLine());
+                            user.setPassword(newPassword);
+                            System.out.println("Password sudah diubah");
+                            break;
+                        case 3:
+                            System.out.println("Sunting User dibatalkan");
+                            break;
+                        default:
+                            System.out.println("Anda salah input nomor!");
+                            break;
+                    }
                 }
             }
         }
+
     }
 
     @Override
     public void showOwnedCourse(String username, String password) {
         for (User user : users) {
-            if (username.equals(user.getUsername()) && password.equals( user.getPassword())) {
+            if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
                 System.out.println("=========================================================");
-                System.out.println("                  COURSE MILIK "+ user.getUsername() +"                  ");
+                System.out.println("                  COURSE MILIK " + user.getUsername() + "                  ");
                 System.out.println("=========================================================");
                 List<Course> userCourses = user.getOwnedCourse();
                 if (userCourses.isEmpty()) {
                     System.out.println("Belum memiliki course.");
                     return;
                 }
-
                 for (Course course : userCourses) {
                     System.out.println("=========================================================");
                     System.out.println("ID Course   : " + course.getCourseId());
@@ -123,7 +125,9 @@ public class UserServiceImpl implements UserService {
                 return;
             }
         }
-        System.out.println("Pastikan User.");
+        System.out.println("=========================================================");
+        System.out.println("                  VERIFIKASI GAGAL                       ");
+        System.out.println("=========================================================");
     }
 
     @Override
@@ -138,8 +142,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addCourseToUser(int idUser, Course course) {
-        for(User user : users){
-            if(user.getUserId() == idUser){
+        for (User user : users) {
+            if (user.getUserId() == idUser) {
                 user.setOwnedCourse(course);
             }
         }

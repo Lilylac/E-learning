@@ -27,10 +27,6 @@ public class UserView {
             System.out.print("Masukan pilihan: ");
             int choose = Integer.valueOf(scan.nextLine());
 
-            if (choose < 1 || choose > 4) {
-                System.out.println("Pilihan tidak ada");
-                show();
-            }
 
             switch (choose) {
                 case 1 -> {
@@ -41,18 +37,16 @@ public class UserView {
                     System.out.println("Masukan Id Anda : ");
                     int idUser = Integer.valueOf(scan.nextLine());
                     courseService.buyCourse(idUser);
-                    show();
                 }
                 case 2 -> {
                     System.out.println("=========================================================");
                     System.out.println("                    FORM VERIFIKASI USER                 ");
                     System.out.println("=========================================================");
-                    System.out.println("Masukan ID Anda : ");
+                    System.out.println("Masukan ID anda : ");
                     String username = String.valueOf(scan.nextLine());
+                    System.out.println("Masukan password anda : ");
                     String password = String.valueOf(scan.nextLine());
                     userService.showOwnedCourse(username, password);
-                    show();
-
                 }
                 case 3 -> {
                     System.out.println("                                                                 ");
@@ -67,8 +61,12 @@ public class UserView {
                     return;
                 }
             }
+            show();
+
         } catch (NumberFormatException e) {
-            System.out.println("Input tidak valid. Silahkan masukan angka");
+            System.out.println("=========================================================");
+            System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
+            System.out.println("=========================================================");
         }
     }
 }

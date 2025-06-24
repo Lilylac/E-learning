@@ -119,7 +119,7 @@ public class CourseServiceImpl implements CourseService {
             boolean coursefound = false;
             if (courses.isEmpty()) {
                 System.out.println("=========================================================");
-                System.out.println("                   Course Belum Tersedia                 ");
+                System.out.println("                   COURSE BELUM TERSEDIA                 ");
                 System.out.println("=========================================================");
             } else {
                 while (!coursefound) {

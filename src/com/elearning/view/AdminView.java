@@ -3,6 +3,7 @@ package com.elearning.view;
 import com.elearning.services.CourseServiceImpl;
 import com.elearning.services.UserServiceImpl;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class AdminView {
@@ -17,33 +18,39 @@ public class AdminView {
     Scanner scan = new Scanner(System.in);
 
     void showMenu() {
-        System.out.println("=========================================================");
-        System.out.println("                     ADMIN DASHBOARD                    ");
-        System.out.println("=========================================================");
-        System.out.println("  1. Users     2. Course     3. Exit");
-        System.out.println("=========================================================");
-        System.out.print("Masukan Pilihan : ");
-        int choose = Integer.valueOf(scan.nextLine());
-
-        if (choose < 1 || choose > 3) {
-            System.out.println("Pilihan tidak ada");
+        try {
+            System.out.println("=========================================================");
+            System.out.println("                     ADMIN DASHBOARD                    ");
+            System.out.println("=========================================================");
+            System.out.println("  1. Users     2. Course     3. Exit");
+            System.out.println("=========================================================");
+            System.out.print("Masukan Pilihan : ");
+            int choose = Integer.valueOf(scan.nextLine());
+            switch (choose) {
+                case 1 -> {
+                    showMenuUser();
+                }
+                case 2 -> {
+                    showMenuCourse();
+                }
+                case 3 -> {
+                    return;
+                }
+                default -> {
+                    System.out.println("=========================================================");
+                    System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
+                    System.out.println("=========================================================");
+                    showMenu();
+                }
+            }
+            showMenu();
+        } catch (InputMismatchException e) {
+            System.out.println("=========================================================");
+            System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
+            System.out.println("=========================================================");
             showMenu();
         }
 
-        switch (choose) {
-            case 1 -> {
-                showMenuUser();
-                showMenu();
-            }
-            case 2 -> {
-                showMenuCourse();
-                showMenu();
-            }
-            case 3 -> {
-                return;
-            }
-            default -> showMenu();
-        }
     }
 
     private void showMenuCourse() {
@@ -77,18 +84,26 @@ public class AdminView {
                     System.out.print("Masukan harga course: ");
                     int price = Integer.parseInt(scan.nextLine());
                     courseService.addCourse(id, nama, desc, price);
-                    System.out.println("Course Berhasil ditambahkan");
                     showMenuCourse();
                 }
                 case 3 -> {
-                    courseService.showAllCourse();
-                    System.out.println("=========================================================");
-                    System.out.println("                FORM INPUT HAPUS KURSUS                  ");
-                    System.out.println("=========================================================");
-                    System.out.println("Masukan index kursus yg kamu akan hapus: ");
-                    int chooseIndex = Integer.parseInt(scan.nextLine());
-                    courseService.removeCourse(chooseIndex);
-                    showMenuCourse();
+                    try {
+                        courseService.showAllCourse();
+                        System.out.println("=========================================================");
+                        System.out.println("                FORM INPUT HAPUS KURSUS                  ");
+                        System.out.println("=========================================================");
+                        System.out.println("Masukan index kursus yg kamu akan hapus: ");
+                        int chooseIndex = Integer.parseInt(scan.nextLine());
+                        courseService.removeCourse(chooseIndex);
+                        System.out.println("=========================================================");
+                        System.out.println("                KURSUS BERHASIL DI HAPUS                 ");
+                        System.out.println("=========================================================");
+                        showMenuCourse();
+                    } catch (InputMismatchException e) {
+                        System.out.println("=========================================================");
+                        System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
+                        System.out.println("=========================================================");
+                    }
                 }
                 case 4 -> {
                     courseService.showAllCourse();

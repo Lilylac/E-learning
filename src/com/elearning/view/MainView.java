@@ -34,11 +34,6 @@ public class MainView {
             System.out.print("Masukan Pilihan : ");
             int choose = Integer.parseInt(scan.nextLine());
 
-            if(choose < 1 || choose > 3){
-                System.out.println("Pilihan tidak ada");
-                show();
-            }
-            
             if (choose == 1) {
                 System.out.println("=========================================================");
                 System.out.println("                     FORM INPUT LOGIN                    ");
@@ -63,23 +58,30 @@ public class MainView {
                 String username = String.valueOf(scan.nextLine());
                 System.out.print("Masukan Password anda: ");
                 String password = String.valueOf(scan.nextLine());
-                if(userService.checkUsernameAvailable(username,password)){
+                if (userService.checkUsernameAvailable(username, password)) {
                     userService.register(userService.idHandling(), username, password);
-                    System.out.println("Akun anda telah berhasil dibuat");
+                    System.out.println("=========================================================");
+                    System.out.println("             AKUN TELAH BERHASIL DIBUAT                  ");
+                    System.out.println("=========================================================");
                 } else {
-                    System.out.println("Username telah terpakai");
+                    System.out.println("=========================================================");
+                    System.out.println("                USERNAME TELAH TERPAKAI                  ");
+                    System.out.println("=========================================================");
                 }
                 show();
             } else if (choose == 3) {
                 System.out.println("=========================================================");
                 System.out.println("                     SEMOGA SUKSES                       ");
                 System.out.println("=========================================================");
-                System.out.println("semoga sukses");
-
+            } else {
+                    System.out.println("=========================================================");
+                    System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
+                    System.out.println("=========================================================");
             }
-
         } catch (InputMismatchException e) {
-            System.out.println("Sout");
+            System.out.println("=========================================================");
+            System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
+            System.out.println("=========================================================");
         }
     }
 }
