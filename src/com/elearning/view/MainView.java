@@ -26,41 +26,66 @@ public class MainView {
 
     public void show() {
         try {
-            System.out.println("--------------WELCOME TO ADITYA COURSE-----------");
-            System.out.println("-------------------------------------------------");
-            System.out.println("--- " + "1. Login    " + "2. Daftar    " + "3. Keluar");
-            System.out.println("-------------------------------------------------");
-            System.out.print("--- " + "Masukan Pilihan : ");
+            System.out.println("=========================================================");
+            System.out.println("                 WELCOME TO ADITYA COURSE                 ");
+            System.out.println("=========================================================");
+            System.out.println("  1. Login       2. Daftar       3. Keluar");
+            System.out.println("=========================================================");
+            System.out.print("Masukan Pilihan : ");
             int choose = Integer.parseInt(scan.nextLine());
+
             if (choose == 1) {
+                System.out.println("=========================================================");
+                System.out.println("                     FORM INPUT LOGIN                    ");
+                System.out.println("=========================================================");
                 System.out.print("Masukan Username anda: ");
                 String username = String.valueOf(scan.nextLine());
                 System.out.print("Masukan Password anda: ");
                 String password = String.valueOf(scan.nextLine());
                 if (adminService.loginAdmin(username, password)) {
-                    AdminView adminView = new AdminView(userService,courseService);
+                    AdminView adminView = new AdminView(userService, courseService);
                     adminView.showMenu();
                 } else if (userService.loginUser(username, password)) {
-                    UserView userView = new UserView(userService,courseService);
+                    UserView userView = new UserView(userService, courseService);
                     userView.show();
+                } else {
+                    System.out.println("=========================================================");
+                    System.out.println("                  LOGIN ANDA GAGAL                       ");
+                    System.out.println("=========================================================");
                 }
                 show();
             } else if (choose == 2) {
+                System.out.println("=========================================================");
+                System.out.println("                  FORM INPUT REGISTER                    ");
+                System.out.println("=========================================================");
                 System.out.print("Masukan Username anda: ");
                 String username = String.valueOf(scan.nextLine());
                 System.out.print("Masukan Password anda: ");
                 String password = String.valueOf(scan.nextLine());
-                userService.register(userService.idHandling(), username, password);
-                System.out.println("Akun anda telah berhasil dibuat");
+                if (userService.checkUsernameAvailable(username, password)) {
+                    userService.register(userService.idHandling(), username, password);
+                    System.out.println("=========================================================");
+                    System.out.println("             AKUN TELAH BERHASIL DIBUAT                  ");
+                    System.out.println("=========================================================");
+                } else {
+                    System.out.println("=========================================================");
+                    System.out.println("                USERNAME TELAH TERPAKAI                  ");
+                    System.out.println("=========================================================");
+                }
                 show();
             } else if (choose == 3) {
-                System.out.println("semoga sukses");
-
+                System.out.println("=========================================================");
+                System.out.println("                     SEMOGA SUKSES                       ");
+                System.out.println("=========================================================");
+            } else {
+                System.out.println("=========================================================");
+                System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
+                System.out.println("=========================================================");
             }
-
-        }
-        catch (InputMismatchException e){
-            System.out.println("Sout");
+        } catch (InputMismatchException e) {
+            System.out.println("=========================================================");
+            System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
+            System.out.println("=========================================================");
         }
     }
 }

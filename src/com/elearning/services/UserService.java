@@ -11,14 +11,11 @@ public interface UserService {
 
     void showAllUsers();
 
-    void showSelectedUser(int IdUser);
-
     void editSelectedUser(String userName, String password);
 
-    void showOwnedCourse(int id);
+    void showOwnedCourse(String username ,String password);
 
-    void removeUser(int idUser);
+    void removeUser(int userId);
 
-    void addCourseToUser(int idUser, Course course);
-
+    void addCourseToUser(String username ,String password, Course course);
 }

@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class UserView {
     Scanner scan = new Scanner(System.in);
-
     private final UserServiceImpl userService;
     private final CourseServiceImpl courseService;
 
@@ -18,29 +17,57 @@ public class UserView {
 
 
     public void show() {
-        System.out.println("---------------------------USER DASHBOARD-------------------");
-        System.out.println("-------------------------------------------------");
-        System.out.println("--- 1. Beli Course    2. Course Saya    3. Edit Profile    99. Exit ");
-        System.out.println("-------------------------------------------------");
-        System.out.print("Masukan pilihan: ");
-        int choose = Integer.valueOf(scan.nextLine());
+        try {
+            System.out.println("=========================================================");
+            System.out.println("                     USER DASHBOARD                     ");
+            System.out.println("=========================================================");
+            System.out.println("  1. Beli Course   2. Course Saya   3. Edit Profile   4. Exit");
+            System.out.println("=========================================================");
+            System.out.print("Masukan pilihan: ");
+            int choose = Integer.valueOf(scan.nextLine());
+            switch (choose) {
+                case 1 -> {
+                    System.out.println("=========================================================");
+                    System.out.println("                    FORM VERIFIKASI USER                 ");
+                    System.out.println("=========================================================");
+                    System.out.print("Masukan username anda : ");
+                    String username = String.valueOf(scan.nextLine());
+                    System.out.print("Masukan password anda :");
+                    String password = String.valueOf(scan.nextLine());
+                    courseService.buyCourse(username, password);
+                }
+                case 2 -> {
+                    System.out.println("=========================================================");
+                    System.out.println("                    FORM VERIFIKASI USER                 ");
+                    System.out.println("=========================================================");
+                    System.out.println("Masukan ID anda : ");
+                    String username = String.valueOf(scan.nextLine());
+                    System.out.println("Masukan password anda : ");
+                    String password = String.valueOf(scan.nextLine());
+                    userService.showOwnedCourse(username, password);
+                }
+                case 3 -> {
 
-        switch (choose) {
-            case 1 -> {
-                courseService.showAllCourse();
+                    System.out.println("=========================================================");
+                    System.out.println("                    FORM VERIFIKASI USER                 ");
+                    System.out.println("=========================================================");
+                    System.out.println("Masukan ID anda : ");
+                    String username = String.valueOf(scan.nextLine());
+                    System.out.println("Masukan password anda : ");
+                    String password = String.valueOf(scan.nextLine());
+                    userService.editSelectedUser(username, password);
+                    show();
+                }
+                case 4 -> {
+                    return;
+                }
             }
-            case 2 -> {
-                System.out.println("Masukan Id Mu : ");
-                int idUser = Integer.valueOf(scan.nextLine());
-                userService.showOwnedCourse(idUser);
+            show();
 
-            }
-            case 3 -> {
-//                userService.editSelectedUser();
-            }
-            case 99 -> {
-                return;
-            }
+        } catch (NumberFormatException e) {
+            System.out.println("=========================================================");
+            System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
+            System.out.println("=========================================================");
         }
     }
 }
