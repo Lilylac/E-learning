@@ -108,6 +108,7 @@ public class UserServiceImpl implements UserService {
 
     }
 
+
     @Override
     public void showOwnedCourse(String username, String password) {
         for (User user : users) {
@@ -158,4 +159,5 @@ public class UserServiceImpl implements UserService {
     public int idHandling() {
         return userIdHelper++;
     }
+
 }

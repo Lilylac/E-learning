@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class UserView {
     Scanner scan = new Scanner(System.in);
-
     private final UserServiceImpl userService;
     private final CourseServiceImpl courseService;
 
@@ -26,7 +25,6 @@ public class UserView {
             System.out.println("=========================================================");
             System.out.print("Masukan pilihan: ");
             int choose = Integer.valueOf(scan.nextLine());
-
             switch (choose) {
                 case 1 -> {
                     System.out.println("=========================================================");
@@ -34,7 +32,7 @@ public class UserView {
                     System.out.println("=========================================================");
                     System.out.print("Masukan username anda : ");
                     String username = String.valueOf(scan.nextLine());
-                    System.out.println("Masukan password anda");
+                    System.out.print("Masukan password anda :");
                     String password = String.valueOf(scan.nextLine());
                     courseService.buyCourse(username, password);
                 }

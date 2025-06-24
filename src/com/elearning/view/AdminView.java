@@ -163,6 +163,7 @@ public class AdminView {
                     System.out.println("        FORM INPUT USERNAME YANG AKAN DI SUNTING         ");
                     System.out.println("=========================================================");
                     System.out.println("Masukan username yang ingin disunting");
+                    System.out.println("Masukan username yang ingin disunting");
                     String userId = String.valueOf(scan.nextLine());
                     System.out.println("Masukan user yang ingin dihapus");
                     String password = String.valueOf(scan.nextLine());
