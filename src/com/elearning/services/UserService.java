@@ -13,7 +13,7 @@ public interface UserService {
 
     void editSelectedUser(String userName, String password);
 
-    void showOwnedCourse(int idUser);
+    void showOwnedCourse(String username ,String password);
 
     void removeUser(int idUser);
 

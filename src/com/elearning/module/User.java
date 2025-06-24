@@ -7,7 +7,7 @@ public class User {
     private int userid;
     private String username;
     private String password;
-    List<Course> ownedCourse = new ArrayList<>();
+    private List<Course> ownedCourse = new ArrayList<>();
 
 
     public User(){}

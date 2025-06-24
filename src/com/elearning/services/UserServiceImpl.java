@@ -100,14 +100,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void showOwnedCourse(int idUser) {
+    public void showOwnedCourse(String username, String password) {
         for (User user : users) {
-            if (idUser == user.getUserId()) {
+            if (username.equals(user.getUsername()) && password.equals( user.getPassword())) {
                 System.out.println("=========================================================");
-                System.out.println("                  COURSE MILIK USER                  ");
+                System.out.println("                  COURSE MILIK "+ user.getUsername() +"                  ");
                 System.out.println("=========================================================");
-
-                System.out.println("== Course milik user: " + user.getUsername() + " ==");
                 List<Course> userCourses = user.getOwnedCourse();
                 if (userCourses.isEmpty()) {
                     System.out.println("Belum memiliki course.");
@@ -115,17 +113,17 @@ public class UserServiceImpl implements UserService {
                 }
 
                 for (Course course : userCourses) {
-                    System.out.println("hi");
+                    System.out.println("=========================================================");
                     System.out.println("ID Course   : " + course.getCourseId());
                     System.out.println("Judul       : " + course.getTittleCourse());
                     System.out.println("Deskripsi   : " + course.getDescCourse());
                     System.out.println("Harga       : " + course.getPriceCourse());
-                    System.out.println("---------------------------");
+                    System.out.println("=========================================================");
                 }
                 return;
             }
         }
-        System.out.println("User tidak ditemukan.");
+        System.out.println("Pastikan User.");
     }
 
     @Override

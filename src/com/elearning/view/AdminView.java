@@ -25,11 +25,11 @@ public class AdminView {
         System.out.print("Masukan Pilihan : ");
         int choose = Integer.valueOf(scan.nextLine());
 
-        if(choose < 1 || choose > 3){
+        if (choose < 1 || choose > 3) {
             System.out.println("Pilihan tidak ada");
             showMenu();
         }
-        
+
         switch (choose) {
             case 1 -> {
                 showMenuUser();
@@ -59,18 +59,15 @@ public class AdminView {
             System.out.println("=========================================================");
             System.out.print("Masukan Pilihan : ");
             int choose = Integer.parseInt(scan.nextLine());
-
-             if(choose < 1 || choose > 5){
-                System.out.println("Pilihan tidak ada");
-                showMenuCourse();
-            }
-            
             switch (choose) {
                 case 1 -> {
                     courseService.showAllCourse();
                     showMenuCourse();
                 }
                 case 2 -> {
+                    System.out.println("=========================================================");
+                    System.out.println("                FORM INPUT KURSUS BARU                   ");
+                    System.out.println("=========================================================");
                     System.out.print("Masukan id: ");
                     int id = Integer.parseInt(scan.nextLine());
                     System.out.print("Masukan nama course: ");
@@ -85,6 +82,9 @@ public class AdminView {
                 }
                 case 3 -> {
                     courseService.showAllCourse();
+                    System.out.println("=========================================================");
+                    System.out.println("                FORM INPUT HAPUS KURSUS                  ");
+                    System.out.println("=========================================================");
                     System.out.println("Masukan index kursus yg kamu akan hapus: ");
                     int chooseIndex = Integer.parseInt(scan.nextLine());
                     courseService.removeCourse(chooseIndex);
@@ -92,6 +92,9 @@ public class AdminView {
                 }
                 case 4 -> {
                     courseService.showAllCourse();
+                    System.out.println("=========================================================");
+                    System.out.println("                  FORM INPUT EDIT BARU                   ");
+                    System.out.println("=========================================================");
                     System.out.println("Masukan id kursus yg kamu akan ubah: ");
                     int chooseID = Integer.parseInt(scan.nextLine());
                     courseService.editCourse(chooseID);
@@ -104,7 +107,9 @@ public class AdminView {
 
             }
         } catch (NumberFormatException e) {
-            System.out.println("Masukkan ID atau Harga Dengan Nomor!!!");
+            System.out.println("=========================================================");
+            System.out.println("                HARAP MASUKAN NOMOR ID                   ");
+            System.out.println("=========================================================");
             showMenuCourse();
         }
     }
@@ -112,6 +117,7 @@ public class AdminView {
 
     private void showMenuUser() {
         try {
+            System.out.println("=========================================================");
             System.out.println("                      USER SETTINGS                      ");
             System.out.println("=========================================================");
             System.out.println("  1. Tampilkan Semua Pengguna");
@@ -123,11 +129,6 @@ public class AdminView {
             System.out.print("Masukan Pilihan : ");
             int choose = Integer.parseInt(scan.nextLine());
 
-            if(choose < 1 || choose > 4){
-                System.out.println("Pilihan tidak ada");
-                showMenuUser();
-            }
-            
             switch (choose) {
                 case 1 -> {
                     System.out.println("                                                                 ");
@@ -135,15 +136,19 @@ public class AdminView {
                     showMenuUser();
                 }
                 case 2 -> {
-                    System.out.println("                                                                 ");
                     userService.showAllUsers();
+                    System.out.println("=========================================================");
+                    System.out.println("                  FORM INPUT HAPUS USER                   ");
+                    System.out.println("=========================================================");
                     System.out.println("Masukan user yang ingin dihapus");
                     int userId = Integer.valueOf(scan.nextLine());
                     userService.removeUser(userId);
                     showMenuUser();
                 }
                 case 3 -> {
-                    System.out.println("                                                                 ");
+                    System.out.println("=========================================================");
+                    System.out.println("        FORM INPUT USERNAME YANG AKAN DI SUNTING         ");
+                    System.out.println("=========================================================");
                     System.out.println("Masukan username yang ingin disunting");
                     String userId = String.valueOf(scan.nextLine());
                     System.out.println("Masukan user yang ingin dihapus");
@@ -154,10 +159,12 @@ public class AdminView {
                 case 4 -> {
                     return;
                 }
+                default -> showMenuUser();
             }
         } catch (NumberFormatException e) {
-            System.out.println("                                                                 ");
-            System.out.println("Masukan input dengan benar");
+            System.out.println("=========================================================");
+            System.out.println("                HARAP MASUKAN NOMOR ID                   ");
+            System.out.println("=========================================================");
             showMenuUser();
         }
     }

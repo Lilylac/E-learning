@@ -69,9 +69,11 @@ public class MainView {
                 } else {
                     System.out.println("Username telah terpakai");
                 }
-
                 show();
             } else if (choose == 3) {
+                System.out.println("=========================================================");
+                System.out.println("                     SEMOGA SUKSES                       ");
+                System.out.println("=========================================================");
                 System.out.println("semoga sukses");
 
             }
