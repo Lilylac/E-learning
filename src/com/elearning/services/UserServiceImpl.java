@@ -148,6 +148,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+
     public void addCourseToUser(String username, String password, Course course) {
         for (User user : users) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {

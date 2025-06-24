@@ -18,5 +18,4 @@ public interface UserService {
     void removeUser(int userId);
 
     void addCourseToUser(String username ,String password, Course course);
-
 }

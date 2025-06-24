@@ -1,6 +1,5 @@
 package com.elearning.services;
 
-
 public interface CourseService {
     void showAllCourse(); // ----------- BUAT USER & ADMIN
 

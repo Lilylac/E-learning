@@ -5,7 +5,7 @@ import com.elearning.module.Course;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.InputMismatchException;
+import java.util.InputMismatchExcception;
 
 public class CourseServiceImpl implements CourseService {
     Scanner scan = new Scanner(System.in);
@@ -28,7 +28,6 @@ public class CourseServiceImpl implements CourseService {
         }
         Course course = new Course(idCourse, title, desc, price);
         courses.add(course);
-    }
 
 
     @Override
