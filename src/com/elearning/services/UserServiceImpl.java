@@ -46,6 +46,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void showAllUsers() {
+        if (users.isEmpty()){
+            System.out.println("=========================================================");
+            System.out.println("               TIDAK ADA USER YANG TERDAFTAR             ");
+            System.out.println("=========================================================");
+            return;
+        }
         for (User user : users) {
             System.out.println("=========================================================");
             System.out.println("                 INFORMASI PENGGUNA                      ");
@@ -131,9 +137,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void removeUser(int idUser) {
+    public void removeUser(int userId) {
         try {
-            users.removeIf(user -> idUser == user.getUserId());
+            users.removeIf(user -> userId == user.getUserId());
             System.out.println("User berhasil di hapus");
         } catch (NumberFormatException e) {
             System.out.println("Harap masukan Id User");
@@ -141,9 +147,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addCourseToUser(int idUser, Course course) {
+    public void addCourseToUser(String username, String password, Course course) {
         for (User user : users) {
-            if (user.getUserId() == idUser) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 user.setOwnedCourse(course);
             }
         }

@@ -10,5 +10,5 @@ public interface CourseService {
 
     void editCourse(int id);
 
-    void buyCourse(int id);
+    void buyCourse(String username, String password);
 }

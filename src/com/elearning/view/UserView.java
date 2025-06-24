@@ -27,16 +27,16 @@ public class UserView {
             System.out.print("Masukan pilihan: ");
             int choose = Integer.valueOf(scan.nextLine());
 
-
             switch (choose) {
                 case 1 -> {
                     System.out.println("=========================================================");
-                    System.out.println("                     FORM BELI COURSE                    ");
+                    System.out.println("                    FORM VERIFIKASI USER                 ");
                     System.out.println("=========================================================");
-                    courseService.showAllCourse();
-                    System.out.println("Masukan Id Anda : ");
-                    int idUser = Integer.valueOf(scan.nextLine());
-                    courseService.buyCourse(idUser);
+                    System.out.print("Masukan username anda : ");
+                    String username = String.valueOf(scan.nextLine());
+                    System.out.println("Masukan password anda");
+                    String password = String.valueOf(scan.nextLine());
+                    courseService.buyCourse(username, password);
                 }
                 case 2 -> {
                     System.out.println("=========================================================");
@@ -49,10 +49,13 @@ public class UserView {
                     userService.showOwnedCourse(username, password);
                 }
                 case 3 -> {
-                    System.out.println("                                                                 ");
-                    System.out.println("Masukan username: ");
+
+                    System.out.println("=========================================================");
+                    System.out.println("                    FORM VERIFIKASI USER                 ");
+                    System.out.println("=========================================================");
+                    System.out.println("Masukan ID anda : ");
                     String username = String.valueOf(scan.nextLine());
-                    System.out.println("Masukan password: ");
+                    System.out.println("Masukan password anda : ");
                     String password = String.valueOf(scan.nextLine());
                     userService.editSelectedUser(username, password);
                     show();

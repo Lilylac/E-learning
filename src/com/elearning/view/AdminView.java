@@ -148,17 +148,15 @@ public class AdminView {
                 case 1 -> {
                     System.out.println("                                                                 ");
                     userService.showAllUsers();
-                    showMenuUser();
                 }
                 case 2 -> {
                     userService.showAllUsers();
                     System.out.println("=========================================================");
                     System.out.println("                  FORM INPUT HAPUS USER                   ");
                     System.out.println("=========================================================");
-                    System.out.println("Masukan user yang ingin dihapus");
+                    System.out.print("Masukan username anda : ");
                     int userId = Integer.valueOf(scan.nextLine());
                     userService.removeUser(userId);
-                    showMenuUser();
                 }
                 case 3 -> {
                     System.out.println("=========================================================");
@@ -169,13 +167,14 @@ public class AdminView {
                     System.out.println("Masukan user yang ingin dihapus");
                     String password = String.valueOf(scan.nextLine());
                     userService.editSelectedUser(userId, password);
-                    showMenuUser();
                 }
                 case 4 -> {
                     return;
                 }
                 default -> showMenuUser();
             }
+            showMenuUser();
+
         } catch (NumberFormatException e) {
             System.out.println("=========================================================");
             System.out.println("                HARAP MASUKAN NOMOR ID                   ");

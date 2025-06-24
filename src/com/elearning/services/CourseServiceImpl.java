@@ -17,8 +17,16 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void addCourse(int id, String title, String desc, int price) {
-        Course course = new Course(id, title, desc, price);
+    public void addCourse(int idCourse, String title, String desc, int price) {
+        for (Course course : courses) {
+            if (idCourse == course.getCourseId()) {
+                System.out.println("=========================================================");
+                System.out.println("            HARAP MENGGUNAKAN ID YANG BERBEDA            ");
+                System.out.println("=========================================================");
+                return;
+            }
+        }
+        Course course = new Course(idCourse, title, desc, price);
         courses.add(course);
     }
 
@@ -26,6 +34,11 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public void removeCourse(int idCourse) {
         courses.removeIf(course -> idCourse == course.getCourseId());
+        boolean checkTrue = courses.removeIf(course -> idCourse == course.getCourseId());
+        if (!checkTrue) {
+            System.out.println("Course Tidak Terdaftar");
+            return;
+        }
         System.out.println("Kursus berhasil di hapus");
     }
 
@@ -48,11 +61,6 @@ public class CourseServiceImpl implements CourseService {
                 System.out.println("Informasi apa yang akan kamu ubah?");
                 System.out.println("=========================================================");
                 int helperEditCourse = Integer.parseInt(scan.nextLine());
-
-                if (helperEditCourse < 1 || helperEditCourse > 4) {
-                    System.out.println("Pilihan tidak ada");
-                }
-
                 switch (helperEditCourse) {
                     case 1 -> {
                         System.out.println("=========================================================");
@@ -86,6 +94,9 @@ public class CourseServiceImpl implements CourseService {
                         int newPrice = Integer.parseInt(scan.nextLine());
                         course.setPriceCourse(newPrice);
                     }
+                    default -> {
+
+                    }
                 }
             }
         }
@@ -96,8 +107,9 @@ public class CourseServiceImpl implements CourseService {
     public void showAllCourse() {
         if (courses.isEmpty()) {
             System.out.println("=========================================================");
-            System.out.println("                   Course Belum Tersedia                 ");
+            System.out.println("                   COURSE BELUM TERSEDIA                 ");
             System.out.println("=========================================================");
+
         }
         System.out.println("=========================================================");
         System.out.println("                       DATA COURSE                       ");
@@ -113,61 +125,70 @@ public class CourseServiceImpl implements CourseService {
 
 
     @Override
-    public void buyCourse(int idUser) {
+    public void buyCourse(String username, String password) {
         try {
             // cari course berdasarkan id
             boolean coursefound = false;
+
             if (courses.isEmpty()) {
                 System.out.println("=========================================================");
                 System.out.println("                   COURSE BELUM TERSEDIA                 ");
                 System.out.println("=========================================================");
             } else {
                 while (!coursefound) {
-                    System.out.println("=========================================================");
-                    System.out.println("               FORM INPUT MEMBELI KURSUS                 ");
-                    System.out.println("=========================================================");
-                    System.out.print("Masukan id course: ");
-                    int id = scan.nextInt();
-
-                    Course selectcourse = null;
-
-                    for (Course course : courses) {
-                        if (id == course.getCourseId()) {
-                            selectcourse = course;
-                        }
-                    }
-                    // jika course ditemukan tampilkan informasi detailnya
-                    if (selectcourse != null) {
+                    if (courses.isEmpty()) {
                         System.out.println("=========================================================");
-                        System.out.println("                       DATA COURSE                       ");
+                        System.out.println("                   COURSE BELUM TERSEDIA                 ");
                         System.out.println("=========================================================");
-                        System.out.println("ID       : " + selectcourse.getCourseId());
-                        System.out.println("Judul    : " + selectcourse.getTittleCourse());
-                        System.out.println("Deskripsi: " + selectcourse.getDescCourse());
-                        System.out.println("Harga    : Rp " + selectcourse.getPriceCourse());
+                        return;
+                    } else {
+                        showAllCourse();
                         System.out.println("=========================================================");
-                        System.out.print("Masukan pembayaran sesuai nominal: ");
-                        int bayar = scan.nextInt();
-
-                        int harga = selectcourse.getPriceCourse();
-
-                        if (bayar < harga) {
-                            System.out.println("Pembayaran tidak cukup. total course: " + harga);
-                        } else {
-                            int kembalian = bayar - harga;
-                            System.out.println("Pembayaran berhasil");
-                            userService.addCourseToUser(idUser, selectcourse);
-                            System.out.println("Course telah ditambahkan ke dalam akun anda");
-
-                            if (kembalian > 0) {
-                                System.out.println("Kembalian: " + kembalian);
+                        System.out.println("               FORM INPUT MEMBELI KURSUS                 ");
+                        System.out.println("=========================================================");
+                        System.out.print("Masukan id course: ");
+                        int id = scan.nextInt();
+                        Course selectcourse = null;
+                        for (Course course : courses) {
+                            if (id == course.getCourseId()) {
+                                selectcourse = course;
                             }
                         }
-                        coursefound = true;
-                    } else {
-                        System.out.println("Course tidak ada silahkan input ulang");
-                    }
+                        // jika course ditemukan tampilkan informasi detailnya
+                        if (selectcourse != null) {
+                            System.out.println("=========================================================");
+                            System.out.println("                       DATA COURSE                       ");
+                            System.out.println("=========================================================");
+                            System.out.println("ID       : " + selectcourse.getCourseId());
+                            System.out.println("Judul    : " + selectcourse.getTittleCourse());
+                            System.out.println("Deskripsi: " + selectcourse.getDescCourse());
+                            System.out.println("Harga    : Rp " + selectcourse.getPriceCourse());
+                            System.out.println("=========================================================");
+                            System.out.print("Masukan pembayaran sesuai nominal: ");
+                            int bayar = scan.nextInt();
 
+                            int harga = selectcourse.getPriceCourse();
+
+                            if (bayar < harga) {
+                                System.out.println("Pembayaran tidak cukup. total course: " + harga);
+                            } else {
+                                int kembalian = bayar - harga;
+                                System.out.println("Pembayaran berhasil");
+                                userService.addCourseToUser(username, password, selectcourse);
+                                System.out.println("Course telah ditambahkan ke dalam akun anda");
+
+                                if (kembalian > 0) {
+                                    System.out.println("Kembalian: " + kembalian);
+                                }
+                            }
+                            coursefound = true;
+                        } else {
+                            System.out.println("=========================================================");
+                            System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
+                            System.out.println("=========================================================");
+                        }
+
+                    }
                 }
 
             }
