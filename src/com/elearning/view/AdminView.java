@@ -170,9 +170,8 @@ public class AdminView {
                     userService.editSelectedUser(username, password);
                     showMenuUser();
                 }
-                case 4 -> {
-                    showMenu();
-                }
+                case 4 -> showMenu();
+
                 default ->  {
                     System.out.println("PILIHAN TIDAK TERSEDIA");
                     showMenuUser();

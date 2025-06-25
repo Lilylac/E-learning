@@ -124,9 +124,7 @@ public class CourseServiceImpl implements CourseService {
                         System.out.println("            HARGA COURSE BERHASIL DIUBAH             ");
                         System.out.println("=========================================================");
                     }
-                    default -> {
-                        System.out.println("Pilihan tidak ada");
-                    }
+                    default -> System.out.println("Pilihan tidak ada");
                 }
             }
         }
