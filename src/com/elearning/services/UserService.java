@@ -7,7 +7,7 @@ public interface UserService {
 
     boolean loginUser(String username, String password);
 
-    boolean checkUsernameAvailable(String username, String password);
+    boolean checkUsernameAvailable(String username);
 
     void showAllUsers();
 

@@ -7,7 +7,7 @@ public interface CourseService {
 
     void removeCourse(int idCourse);
 
-    void editCourse(int id);
+    void editCourse(int idCourse);
 
     void buyCourse(String username, String password);
 }

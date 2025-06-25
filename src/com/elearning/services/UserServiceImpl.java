@@ -5,6 +5,7 @@ import com.elearning.module.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class UserServiceImpl implements UserService {
@@ -31,7 +32,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkUsernameAvailable(String username, String password) {
+    public boolean checkUsernameAvailable(String username) {
         boolean helperRegister = true;
         for (User user : users) {
             if (user.getUsername().equals(username)) {
@@ -84,13 +85,13 @@ public class UserServiceImpl implements UserService {
                     int choose = Integer.parseInt(scan.nextLine());
                     switch (choose) {
                         case 1:
-                            System.out.println("Masukkan username baru :");
+                            System.out.print("Masukkan username baru : ");
                             String newUsername = String.valueOf(scan.nextLine());
                             user.setUsername(newUsername);
                             System.out.println("Username sudah diubah");
                             break;
                         case 2:
-                            System.out.println("Masukkan password baru :");
+                            System.out.print("Masukkan password baru : ");
                             String newPassword = String.valueOf(scan.nextLine());
                             user.setPassword(newPassword);
                             System.out.println("Password sudah diubah");
@@ -114,7 +115,7 @@ public class UserServiceImpl implements UserService {
         for (User user : users) {
             if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
                 System.out.println("=========================================================");
-                System.out.println("                  COURSE MILIK " + user.getUsername() + "                  ");
+                System.out.println("                  COURSE MILIK " + user.getUsername().toUpperCase(Locale.ROOT) + "                  ");
                 System.out.println("=========================================================");
                 List<Course> userCourses = user.getOwnedCourse();
                 if (userCourses.isEmpty()) {

@@ -1,15 +1,11 @@
 package com.elearning.view;
 
-
-import com.elearning.module.Course;
-import com.elearning.module.User;
 import com.elearning.services.AdminServiceImpl;
 import com.elearning.services.CourseServiceImpl;
 import com.elearning.services.UserServiceImpl;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 
 public class MainView {
     private final UserServiceImpl userService;
@@ -22,7 +18,6 @@ public class MainView {
         this.adminService = adminService;
         this.courseService = courseService;
     }
-
 
     public void show() {
         try {
@@ -62,7 +57,7 @@ public class MainView {
                 String username = String.valueOf(scan.nextLine());
                 System.out.print("Masukan Password anda: ");
                 String password = String.valueOf(scan.nextLine());
-                if (userService.checkUsernameAvailable(username, password)) {
+                if (userService.checkUsernameAvailable(username)) {
                     userService.register(userService.idHandling(), username, password);
                     System.out.println("=========================================================");
                     System.out.println("             AKUN TELAH BERHASIL DIBUAT                  ");
@@ -81,6 +76,7 @@ public class MainView {
                 System.out.println("=========================================================");
                 System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
                 System.out.println("=========================================================");
+                show();
             }
         } catch (InputMismatchException e) {
             System.out.println("=========================================================");

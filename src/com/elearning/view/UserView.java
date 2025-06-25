@@ -15,7 +15,6 @@ public class UserView {
         this.courseService = courseService;
     }
 
-
     public void show() {
         try {
             System.out.println("=========================================================");
@@ -32,28 +31,29 @@ public class UserView {
                     System.out.println("=========================================================");
                     System.out.print("Masukan username anda : ");
                     String username = String.valueOf(scan.nextLine());
-                    System.out.print("Masukan password anda :");
+                    System.out.print("Masukan password anda : ");
                     String password = String.valueOf(scan.nextLine());
                     courseService.buyCourse(username, password);
+                    show();
                 }
                 case 2 -> {
                     System.out.println("=========================================================");
                     System.out.println("                    FORM VERIFIKASI USER                 ");
                     System.out.println("=========================================================");
-                    System.out.println("Masukan ID anda : ");
+                    System.out.print("Masukan username anda : ");
                     String username = String.valueOf(scan.nextLine());
-                    System.out.println("Masukan password anda : ");
+                    System.out.print("Masukan password anda : ");
                     String password = String.valueOf(scan.nextLine());
                     userService.showOwnedCourse(username, password);
+                    show();
                 }
                 case 3 -> {
-
                     System.out.println("=========================================================");
                     System.out.println("                    FORM VERIFIKASI USER                 ");
                     System.out.println("=========================================================");
-                    System.out.println("Masukan ID anda : ");
+                    System.out.print("Masukan username anda : ");
                     String username = String.valueOf(scan.nextLine());
-                    System.out.println("Masukan password anda : ");
+                    System.out.print("Masukan password anda : ");
                     String password = String.valueOf(scan.nextLine());
                     userService.editSelectedUser(username, password);
                     show();
@@ -61,9 +61,11 @@ public class UserView {
                 case 4 -> {
                     return;
                 }
+                default -> {
+                    System.out.println("PILIHAN TIDAK TERSEDIA");
+                    show();
+                }
             }
-            show();
-
         } catch (NumberFormatException e) {
             System.out.println("=========================================================");
             System.out.println("                PILIHAN TIDAK TERSEDIA                   ");
